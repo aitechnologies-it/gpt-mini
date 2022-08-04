@@ -1,0 +1,6 @@
+tensorflow==2.9.1
+tensorflow_addons==0.17.1
+numpy==1.23.1
+tokenizers==0.12.1
+matplotlib
+tqdm
