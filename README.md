@@ -29,7 +29,7 @@ pip install -r requirements.txt
 
 ## Examples
 
-Example python notebooks can be found in the main directory. We currently provide [play_text.ipynb](play_text.ipynb) to train (token-level) GPT to learn generate text from text provided as input. Check also [train_tokenizer.ipynb](train_tokenizer.ipynb) that shows how to train an Huggingface Tokenizer on your own data.
+Example python notebooks can be found in the main directory. We currently provide [play_text.ipynb](play_text.ipynb) to train (both token- and char-level) GPT to learn generate text from text provided as input. Check also [train_tokenizer.ipynb](train_tokenizer.ipynb) that shows how to train an Huggingface Tokenizer on your own data.
 Also, we provide [play_image.ipynb](play_image.ipynb) to train the model to generate cifar-10 images in an auto-regressive (pixel-level) fashion. 
 
 ## Usage
