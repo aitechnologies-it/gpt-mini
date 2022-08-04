@@ -2,7 +2,7 @@
 
 <img src="dalle.png" alt="A speedboat stopped by a futuristic cyborg, cyberpunk style." width="230">
 
-##### *This image has been generated using OpenAI Dall-e 2.*
+##### *This image has been generated using OpenAI Dall-e 2.
 
 <br /> This is a minimalistic [Tensorflow](https://www.tensorflow.org/) (re-)re-implementation highly inspired to [Karpathy's minGPT](https://github.com/karpathy/minGPT) Pytorch re-implementation of the [OpenAI GPT](https://github.com/openai/gpt-2).
 This code is intended for research and educative purposes, and should be treaded accordingly.
@@ -29,8 +29,8 @@ pip install -r requirements.txt
 
 ## Examples
 
-Example python notebooks can be found in the main directory. We currently provide [play_text.ipynb](play_text.ipynb) to train (token-level) GPT to learn generate text from text provided as input. 
-Also, we provide [play_image.ipynb](play_image.ipynb) to train the model generate cifar-10 images in an auto-regressive (at pixel-level) fashion. Instead, [train_tokenizer.ipynb](train_tokenizer.ipynb) shows how to train an Huggingface Tokenizer on your own data.
+Example python notebooks can be found in the main directory. We currently provide [play_text.ipynb](play_text.ipynb) to train (token-level) GPT to learn generate text from text provided as input. Check also [train_tokenizer.ipynb](train_tokenizer.ipynb) that shows how to train an Huggingface Tokenizer on your own data.
+Also, we provide [play_image.ipynb](play_image.ipynb) to train the model generate cifar-10 images in an auto-regressive (at pixel-level) fashion. 
 
 ## Usage
 
