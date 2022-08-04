@@ -41,9 +41,8 @@ from gpt.modeling import (GPT1Config, GPT)
 from gpt.trainer import (TrainerConfig, Trainer)
 
 class MyDataset(tf.data.Dataset):
-    @classmethod
     def _gen_examples_from(
-        cls, data: tf.Tensor, ...
+        data: tf.Tensor, ...
     ):
         def _gen():
             for example in data:
