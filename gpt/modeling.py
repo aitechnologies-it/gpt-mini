@@ -4,8 +4,6 @@ import tensorflow as tf
 import tensorflow.keras as K
 import tensorflow_addons as tfa
 
-import numpy as np
-
 
 class GPTConfig:
     """ base GPT config, params common to all GPT versions """
@@ -111,15 +109,14 @@ class CausalSelfAttention(K.layers.Layer):
         att = att * tf.math.rsqrt(tf.cast(k.shape[-1], att.dtype))
         att = self.mask_attn_weights(att)
         att = tf.nn.softmax(att, axis=-1)
-        # att = self.attn_drop(att, training=training)
+        att = self.attn_drop(att, training=training)
 
         y = tf.matmul(att, v) # (B, nh, T, T) x (B, nh, T, hs) -> (B, nh, T, hs)
         y = tf.transpose(y, perm=[0, 2, 1, 3]) # (B, nh, T, hs) -> (B, T, nh, hs)
         y = tf.reshape(y, shape=(-1, T, C)) # re-assemble all head outputs side by side
 
         # output projection
-        # y = self.resid_drop(self.proj(y), training=training)
-        y = self.proj(y)
+        y = self.resid_drop(self.proj(y), training=training)
         return y
     
 
@@ -197,7 +194,6 @@ class GPT(K.Model):
         if targets is not None:
             loss_fn = K.losses.SparseCategoricalCrossentropy(from_logits=True)
             loss = loss_fn(targets, logits)
-        # outputs = (logits, loss, e)
         outputs = (logits, loss)
         return outputs
 
@@ -297,18 +293,6 @@ class GPT(K.Model):
         sample=False,
         top_k=None
     ):
-        # if not isinstance(input_ids, (tf.Tensor, np.ndarray)):
-        #     raise ValueError(f'Input input_ids should be tf.Tensor or np.ndarray, found {type(input_ids)}')
-        # if isinstance(input_ids, tf.Tensor) and not input_ids.dtype.is_integer:
-        #     raise ValueError(f'The dtype of Tensor input_ids should be int, found {input_ids.dtype}')
-        # if input_ids.ndim < 1 or input_ids.ndim > 2:
-        #     raise ValueError(f'Input input_ids should have 1 or 2 dims, found {input_ids.ndim} dimensions.')
-            
-        # if input_ids.ndim == 2 and input_ids.shape[0] > 1:
-        #     raise ValueError('Input input_ids should only contain one sequence, ie. should have batch of size 1.')
-        # if input_ids.ndim == 1:
-        #     input_ids = tf.expand_dims(input_ids, axis=0)
-
         # get model's context size
         ctx_sz = self.config.block_size
         
