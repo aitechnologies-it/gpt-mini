@@ -176,6 +176,7 @@ class GPT(K.Model):
             initializer=get_initializer(), dtype=tf.float32,
             trainable=True,
         )
+        super().build(input_shape)
 
     def call(self, input_ids, targets=None, training=False):
         _, T = input_ids.shape
